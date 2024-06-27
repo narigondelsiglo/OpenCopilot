@@ -1,0 +1,107 @@
+---
+title: "Human Handoff"
+description: "Learn how the Copilot can handoff the conversation to a human agent."
+---
+
+<Info>
+Currently, human handoff is in beta and only available for a few customers. If you are interested in using this feature, please contact us at mo@opencopilot.so, and we will be happy to help you.
+</Info>
+
+## What is This?
+
+One of the most important features of the Copilot is the ability to handoff the conversation to a human agent. This is useful when the Copilot is unable to understand the user's request or when the user requests to speak to a human agent. We realized that most of the time, angry customers are looking for a human agent to talk to and solve their problems.
+
+## How Does It Work?
+
+Once this system action is installed on your Copilot, a `handoff` event could happen in two ways:
+
+- When the user explicitly asks to talk to a human agent.
+- When the Copilot is unable to understand the user's request or feels that the user is angry and dissatisfied.
+
+## How It Will Show Up in the Inbox?
+
+Two ways:
+
+- Once the conversation is handed off to a human agent, the conversation will be marked as `handoff` and will be assigned to the human agent in the inbox (based on the type of issue and the human agent's availability).
+- However, if you enable "Zendesk or Intercom" integrations, the conversation (along with the summary and other useful information) will be sent to your support tool, so your support staff can pick it up from there.
+
+<Warning>
+This feature is in beta and only available for a few customers. If you are interested in using this feature, please contact us at mo@opencopilot.so, and we will be happy to help you.
+</Warning>
+
+------
+
+## Handoff on the Phone
+
+When the AI is not able to understand the user's request or when the user requests to speak to a human agent, the AI can transfer the call to another number that is managed by a human.
+
+- From the phone channel, edit the desired phone number.
+- On the `handoff` input, enter the number of the human agent.
+- Click on the `Save` button.
+
+The conversation will also be marked as `handoff` and will be assigned to the human agent in the inbox (based on the type of issue and the human agent's availability).
+
+------
+
+## Handoff on the Email
+
+When the AI is not able to understand the user's request or when the user requests to speak to a human agent, the AI will assign the conversation to a human agent automatically based on the type of issue and the human agent's availability.
+
+------
+
+## Handoff on the Web UI
+
+The copilot can handoff the conversation to a human agent on the web UI. This is useful when the copilot is unable to understand the user's request or when the user requests to speak to a human agent, we reialzed that most of the time angry customers are looking for a human agent to talk to and solve their problems.
+
+#### How to detect `handoff` event?
+
+- **Option 1:** By using `onHandoff` callback function:
+
+  This function will give you the flexibility to handle the `handoff` event in your own way, common case is to direct the user to some sort of ticketing system or a live chat system.
+
+  ```javascript
+    // add this in the chat widget options object
+    onHandoff(handoffPayload) {
+            console.log("Handoff", handoffPayload);
+    }
+  ```
+
+- **Option 2:** By using <a href="/widget/not-gen-ui">"respond with UI"</a> feature:
+
+  You can use the "respond with UI" feature to handle the `handoff` event by rendering a custom UI to the user. for example, you can render a from to collect the user's contact information and the nature of the problem.
+
+  ```javascript
+    // add this in the chat widget options object
+    components: [
+          {
+            key: "HANDOFF", // static
+            component: (props: ComponentProps<HandoffPayloadType>) => {
+              return props.data.summery;
+            },
+          },
+        ],
+  ```
+#### I want to use my own UI to handle the `handoff` event, how can I do that?
+The same as defining a UI component you will do the same instead, the only difference is that you will use the `HANDOFF` key to define the UI component that will be rendered when the `handoff` event is triggered.
+
+```javascript
+  // add this in the chat widget options object
+  components: [
+        {
+          key: "HANDOFF", // static
+          component: (props: ComponentProps<HandoffPayloadType>) => {
+            return props.data.summery;
+          },
+        },
+      ],
+```
+
+#### What does the `handoff` event payload look like?
+The `handoff` event payload will contain the following information:
+
+```json
+{
+  "summery": "full summery of the conversation, it can be used by the human agent to understand the context of the conversation faster",
+  "sentiment": "neutral|angry|happy",
+}
+```

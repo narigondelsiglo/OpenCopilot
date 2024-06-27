@@ -1,0 +1,141 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "OpenCopilot Docs",
+  "logo": {
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#0069ED",
+    "light": "#4D9CFF",
+    "dark": "#0050B4"
+  },
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/openchatai/opencopilot"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://opencopilot.so"
+  },
+  "anchors": [
+    {
+      "name": "Changelog",
+      "icon": "list",
+      "url": "https://github.com/openchatai/opencopilot/releases"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/openchatai/opencopilot",
+      "icon": "github"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting started",
+      "icon": "book",
+      "iconType": "light",
+      "pages": ["introduction"]
+    },
+    {
+      "group": "Web Support",
+      "icon": "sun",
+      "pages": [
+        "widget/embed",
+        "widget/styling",
+        "widget/not-gen-ui",
+        "authorization",
+        "widget/helper-exports"
+      ]
+    },
+    {
+      "group": "Phone Support",
+      "icon": "phone",
+      "pages": ["phone/new"]
+    },
+    {
+      "group": "Email Support",
+      "icon": "envelope",
+      "pages": ["email/new"]
+    },
+    {
+      "group": "Actions",
+      "icon": "bolt",
+      "pages": [
+        "taking-actions",
+        "authorization",
+        "resources/human-handoff",
+        "resources/autopilot-topics"
+      ]
+    },
+    {
+      "group": "Managing copilots via API",
+      "pages": [
+        "api-notes",
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/delete"
+      ]
+    },
+    {
+      "group": "Actions",
+      "pages": [
+        "api-reference/endpoint/delete-all-actions",
+        "api-reference/endpoint/import-actions-from-swagger"
+      ]
+    },
+    {
+      "group": "Knowledge Base",
+      "pages": [
+        "api-reference/endpoint/ingest-knowldge-from-file",
+        "api-reference/endpoint/ingest-knowledgebase-from-url",
+        "api-reference/endpoint/delete-bulk-knowledgebase",
+        "api-reference/endpoint/list-data-sources"
+      ]
+    },
+    {
+      "group": "History",
+      "pages": [
+        "api-reference/endpoint/conversation-history",
+        "api-reference/endpoint/conversation-messages"
+      ]
+    },
+    {
+      "group": "Contacts",
+      "pages": [
+        "api-reference/contacts/introduction",
+        "api-reference/contacts/create",
+        "api-reference/contacts/delete",
+        "api-reference/contacts/list",
+        "api-reference/contacts/update"
+      ]
+    },
+    {
+      "group": "Chat API",
+      "pages": ["api-reference/endpoint/chat-init"]
+    },
+    {
+      "group": "Native Integrations",
+      "pages": ["dashboard/zendesk_integration"]
+    },
+    {
+      "group": "Votes & RLHF", 
+      "pages": [
+        "votes/rlhf",
+        "api-reference/endpoint/votes-add"
+      ]
+    },
+    {
+      "group": "Resources",
+      "pages": ["resources/ci-cd-actions"]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/openchatai"
+  },
+  "api": {
+    "playground": {}
+  }
+}
